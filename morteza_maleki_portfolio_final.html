@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morteza Maleki, PhD – Photonic Sensing & Multiphysics Simulation Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0a0f1e;--navy-mid:#0f1729;--navy-card:#141e30;
+  --teal:#0d9488;--teal-bright:#14b8a6;--teal-glow:#2dd4bf;
+  --gold:#d97706;--gold-light:#f59e0b;
+  --white:#f0f4f8;--muted:#94a3b8;--muted-dark:#64748b;
+  --border:rgba(13,148,136,0.18);
+  --card-bg:rgba(255,255,255,0.032);
+  --card-border:rgba(255,255,255,0.07);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--navy);color:var(--white);line-height:1.7;font-size:16px;overflow-x:hidden}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,15,30,0.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 2.5rem}
+.nav-inner{max-width:1140px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:58px}
+.nav-logo{font-family:'Space Mono',monospace;font-size:13px;color:var(--teal-bright);text-decoration:none;letter-spacing:.06em}
+.nav-links{display:flex;gap:1.6rem;list-style:none}
+.nav-links a{font-size:12px;color:var(--muted);text-decoration:none;letter-spacing:.04em;transition:color .2s;text-transform:uppercase}
+.nav-links a:hover{color:var(--white)}
+
+/* ── HERO ── */
+#hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
+#wave-canvas{position:absolute;inset:0;width:100%;height:100%;opacity:.5}
+.hero-content{position:relative;z-index:2;max-width:900px;padding:6rem 2.5rem 4rem}
+.hero-eyebrow{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.28em;color:var(--teal-bright);text-transform:uppercase;margin-bottom:1.4rem}
+.hero-name{font-family:'Space Grotesk',sans-serif;font-size:clamp(3rem,7.5vw,5.8rem);font-weight:700;line-height:.98;letter-spacing:-.035em;color:#fff;margin-bottom:.6rem}
+.hero-name span{color:var(--teal-glow)}
+.hero-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(1rem,2.4vw,1.3rem);font-weight:300;color:var(--muted);margin-bottom:.5rem;letter-spacing:.01em}
+.hero-sub{font-size:13.5px;color:var(--muted-dark);margin-bottom:2rem;font-family:'Space Mono',monospace;letter-spacing:.04em}
+.hero-stats{display:flex;gap:2.2rem;margin-bottom:2.2rem;flex-wrap:wrap}
+.stat{display:flex;flex-direction:column}
+.stat-num{font-family:'Space Grotesk',sans-serif;font-size:1.9rem;font-weight:700;color:var(--teal-glow);line-height:1}
+.stat-label{font-size:11px;color:var(--muted);letter-spacing:.06em;margin-top:3px;text-transform:uppercase}
+.hero-btns{display:flex;gap:.85rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.btn{display:inline-flex;align-items:center;gap:.45rem;padding:.6rem 1.35rem;border-radius:6px;font-family:'Space Grotesk',sans-serif;font-size:13.5px;font-weight:500;text-decoration:none;transition:all .2s;letter-spacing:.02em;cursor:pointer}
+.btn-primary{background:var(--teal);color:#fff;border:1px solid var(--teal)}
+.btn-primary:hover{background:var(--teal-bright);border-color:var(--teal-bright)}
+.btn-ghost{background:transparent;color:var(--muted);border:1px solid rgba(255,255,255,.13)}
+.btn-ghost:hover{color:#fff;border-color:rgba(255,255,255,.32);background:rgba(255,255,255,.04)}
+
+/* Scholar badge */
+.scholar-strip{display:inline-flex;align-items:center;gap:1rem;padding:.55rem 1.1rem;border:1px solid rgba(13,148,136,.28);border-radius:8px;background:rgba(13,148,136,.06);text-decoration:none;color:var(--white);font-size:13px;transition:all .2s}
+.scholar-strip:hover{border-color:var(--teal-bright);background:rgba(13,148,136,.11)}
+.s-label{font-size:11px;color:var(--muted);font-family:'Space Mono',monospace;letter-spacing:.05em}
+.s-metric{display:flex;flex-direction:column;align-items:center;gap:1px}
+.s-num{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:14px;color:var(--teal-glow)}
+.s-lbl{font-size:10px;color:var(--muted);font-family:'Space Mono',monospace;letter-spacing:.06em;text-transform:uppercase}
+.s-sep{width:1px;height:28px;background:rgba(255,255,255,.1)}
+.s-arrow{font-size:11px;color:var(--teal-bright);margin-left:.25rem}
+
+/* ── LAYOUT ── */
+.page-section{max-width:1140px;margin:0 auto;padding:5rem 2.5rem}
+.section-eyebrow{font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.32em;color:var(--teal);text-transform:uppercase;margin-bottom:.7rem}
+.section-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.6rem,3vw,2.15rem);font-weight:600;color:#fff;margin-bottom:2.75rem;letter-spacing:-.022em;line-height:1.18}
+.subsection-title{font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:600;color:#fff;margin:2.75rem 0 1.2rem;letter-spacing:-.01em}
+.divider{height:1px;background:linear-gradient(90deg,var(--border),transparent)}
+.alt-bg{background:var(--navy-mid)}
+
+/* ── ABOUT ── */
+.about-grid{display:grid;grid-template-columns:1.65fr 1fr;gap:4rem;align-items:start}
+.about-text p{color:var(--muted);margin-bottom:1.15rem;font-size:15.5px;line-height:1.82}
+.about-text p strong{color:var(--white);font-weight:500}
+.about-text .tagline{font-family:'Space Grotesk',sans-serif;font-size:1.05rem;color:var(--teal-glow);font-style:italic;border-left:2px solid var(--teal);padding-left:1rem;margin-bottom:1.4rem;line-height:1.5}
+.info-block{display:flex;flex-direction:column;gap:0}
+.info-row{display:flex;align-items:flex-start;gap:.75rem;padding:.7rem 0;border-bottom:1px solid var(--card-border);font-size:13.5px}
+.info-row:last-child{border-bottom:none}
+.info-key{color:var(--muted);min-width:88px;flex-shrink:0;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.04em;text-transform:uppercase;padding-top:2px}
+.info-val{color:var(--white)}
+.info-val a{color:var(--teal-bright);text-decoration:none}
+.info-val a:hover{text-decoration:underline}
+
+/* ── SKILLS ── */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(295px,1fr));gap:1.1rem}
+.skill-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:1.4rem;transition:border-color .2s}
+.skill-card:hover{border-color:rgba(13,148,136,.28)}
+.skill-icon{font-size:1.4rem;margin-bottom:.65rem}
+.skill-card h3{font-family:'Space Grotesk',sans-serif;font-size:14.5px;font-weight:600;color:#fff;margin-bottom:.7rem;letter-spacing:-.01em}
+.tags{display:flex;flex-wrap:wrap;gap:.35rem}
+.tag{font-size:11.5px;padding:3px 9px;border-radius:100px;font-family:'Space Mono',monospace}
+.tag-teal{background:rgba(13,148,136,.1);border:1px solid rgba(13,148,136,.25);color:var(--teal-glow)}
+.tag-gold{background:rgba(217,119,6,.1);border:1px solid rgba(217,119,6,.28);color:var(--gold-light)}
+.tag-muted{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:var(--muted)}
+.tag-purple{background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.25);color:#c4b5fd}
+
+/* ── EXPERIENCE TIMELINE ── */
+.timeline{position:relative;padding-left:1.85rem}
+.timeline::before{content:'';position:absolute;left:0;top:10px;bottom:0;width:1px;background:linear-gradient(180deg,var(--teal) 0%,transparent 100%)}
+.tl-item{position:relative;margin-bottom:2.75rem}
+.tl-item::before{content:'';position:absolute;left:-2.23rem;top:9px;width:8px;height:8px;border-radius:50%;background:var(--teal-bright);border:2px solid var(--navy);box-shadow:0 0 0 2px var(--teal)}
+.tl-header{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.5rem;margin-bottom:.25rem}
+.tl-role{font-family:'Space Grotesk',sans-serif;font-size:16.5px;font-weight:600;color:#fff;letter-spacing:-.01em}
+.tl-date{font-family:'Space Mono',monospace;font-size:11.5px;color:var(--teal-bright);white-space:nowrap;padding:2px 10px;border:1px solid rgba(20,184,166,.28);border-radius:100px}
+.tl-org{font-size:13.5px;color:var(--gold-light);margin-bottom:.65rem;font-weight:500}
+.tl-body{color:var(--muted);font-size:14px;line-height:1.78}
+.tl-body ul{padding-left:1.15rem;margin-top:.45rem}
+.tl-body li{margin-bottom:.38rem}
+.tl-body li strong{color:var(--white);font-weight:500}
+.tl-body p{margin-bottom:.45rem}
+.tl-highlight{background:rgba(13,148,136,.07);border:1px solid rgba(13,148,136,.18);border-radius:8px;padding:.9rem 1.1rem;margin-top:.75rem;font-size:13.5px;color:var(--muted)}
+.tl-highlight strong{color:var(--teal-glow)}
+
+/* ── PROJECTS ── */
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(315px,1fr));gap:1.1rem}
+.proj-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:1.6rem;transition:border-color .22s,transform .18s;display:flex;flex-direction:column}
+.proj-card:hover{border-color:rgba(13,148,136,.32);transform:translateY(-2px)}
+.proj-badge{display:inline-block;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px;border-radius:4px;margin-bottom:.7rem}
+.badge-space{color:var(--gold-light);border:1px solid rgba(245,158,11,.3)}
+.badge-phd{color:#c4b5fd;border:1px solid rgba(196,181,253,.28)}
+.badge-industry{color:#86efac;border:1px solid rgba(134,239,172,.28)}
+.badge-bio{color:#f9a8d4;border:1px solid rgba(249,168,212,.28)}
+.badge-msc{color:#7dd3fc;border:1px solid rgba(125,211,252,.28)}
+.proj-card h3{font-family:'Space Grotesk',sans-serif;font-size:15.5px;font-weight:600;color:#fff;margin-bottom:.55rem;line-height:1.32;letter-spacing:-.01em}
+.proj-card p{color:var(--muted);font-size:13.5px;line-height:1.72;margin-bottom:.85rem;flex:1}
+.proj-meta{font-family:'Space Mono',monospace;font-size:10.5px;color:var(--muted-dark);letter-spacing:.04em;margin-top:auto}
+
+/* ── PUBLICATIONS ── */
+.pub-stats-row{display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.pub-stat-pill{display:flex;align-items:center;gap:.5rem;padding:.45rem 1rem;background:var(--card-bg);border:1px solid var(--card-border);border-radius:100px;font-size:13px}
+.pub-stat-pill strong{color:var(--teal-glow);font-family:'Space Grotesk',sans-serif;font-weight:600}
+.pub-stat-pill span{color:var(--muted);font-size:12px}
+.pub-filters{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.4rem}
+.pfbtn{font-family:'Space Mono',monospace;font-size:11px;padding:4px 13px;border-radius:100px;border:1px solid var(--card-border);background:transparent;color:var(--muted);cursor:pointer;transition:all .2s;letter-spacing:.05em}
+.pfbtn:hover,.pfbtn.active{background:rgba(13,148,136,.14);border-color:rgba(13,148,136,.38);color:var(--teal-glow)}
+.pub-year-sep{font-family:'Space Mono',monospace;font-size:10.5px;color:var(--muted-dark);letter-spacing:.12em;margin:1.1rem 0 .5rem}
+.pub-list{display:flex;flex-direction:column;gap:.75rem}
+.pub-item{padding:1rem 1.3rem;background:var(--card-bg);border:1px solid var(--card-border);border-left:3px solid var(--teal);border-radius:0 8px 8px 0;transition:border-left-color .2s}
+.pub-item:hover{border-left-color:var(--teal-glow)}
+.pub-item.pub-led{border-left-color:var(--gold)}
+.pub-item.pub-led:hover{border-left-color:var(--gold-light)}
+.pub-item.pub-conf{border-left-color:#8b5cf6}
+.pub-title{font-size:13.5px;font-weight:500;color:var(--white);margin-bottom:.28rem;line-height:1.5}
+.pub-venue{font-size:12px;color:var(--teal-bright);font-family:'Space Mono',monospace}
+.pub-conf .pub-venue{color:#a78bfa}
+.pub-note{font-size:11.5px;color:var(--gold-light);margin-top:.2rem}
+
+/* ── COLLABORATIONS ── */
+.collab-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(275px,1fr));gap:1rem}
+.collab-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:1.2rem 1.4rem}
+.collab-card h4{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;color:#fff;margin-bottom:.35rem;line-height:1.3}
+.collab-card p{font-size:13px;color:var(--muted);line-height:1.65}
+.collab-paper{font-size:11.5px;color:var(--teal-bright);font-family:'Space Mono',monospace;margin-top:.45rem}
+
+/* ── SCIENTIFIC STANDING ── */
+.standing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.85rem}
+.standing-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:8px;padding:1rem 1.2rem;display:flex;align-items:flex-start;gap:.75rem}
+.standing-dot{width:7px;height:7px;border-radius:50%;background:var(--teal);flex-shrink:0;margin-top:5px}
+.standing-dot.gold{background:var(--gold)}
+.standing-text h4{font-size:13.5px;font-weight:500;color:var(--white);margin-bottom:.15rem}
+.standing-text p{font-size:12px;color:var(--muted);font-family:'Space Mono',monospace;line-height:1.5}
+.metrics-row{display:flex;gap:1.2rem;flex-wrap:wrap;margin-bottom:2rem}
+.metric-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:1.1rem 1.4rem;text-align:center;min-width:120px}
+.metric-num{font-family:'Space Grotesk',sans-serif;font-size:1.75rem;font-weight:700;color:var(--teal-glow);line-height:1}
+.metric-label{font-size:11px;color:var(--muted);font-family:'Space Mono',monospace;letter-spacing:.06em;text-transform:uppercase;margin-top:4px}
+.citation-chart{display:flex;align-items:flex-end;gap:6px;height:60px;margin-top:1.5rem;padding:0 .5rem}
+.cc-bar-wrap{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1}
+.cc-bar{background:var(--teal);border-radius:3px 3px 0 0;width:100%;transition:opacity .2s;min-height:3px}
+.cc-bar:hover{opacity:.75}
+.cc-year{font-family:'Space Mono',monospace;font-size:9px;color:var(--muted-dark)}
+.cc-num{font-family:'Space Mono',monospace;font-size:9px;color:var(--teal-bright)}
+
+/* ── LEADERSHIP & MENTORING ── */
+.leadership-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.leadership-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:1.5rem 1.75rem}
+.leadership-card h3{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:#fff;margin-bottom:1rem;letter-spacing:-.01em}
+.leadership-stat{display:flex;align-items:baseline;gap:.5rem;margin-bottom:.5rem}
+.leadership-stat .big{font-family:'Space Grotesk',sans-serif;font-size:1.6rem;font-weight:700;color:var(--teal-glow);line-height:1}
+.leadership-stat .unit{font-size:13px;color:var(--muted)}
+.leadership-items{list-style:none;display:flex;flex-direction:column;gap:.5rem;margin-top:.75rem}
+.leadership-items li{font-size:13.5px;color:var(--muted);padding-left:1rem;position:relative;line-height:1.6}
+.leadership-items li::before{content:'→';position:absolute;left:0;color:var(--teal);font-size:11px;top:3px}
+.leadership-items li strong{color:var(--white);font-weight:500}
+.comsol-hours-note{font-size:12.5px;color:var(--muted-dark);font-style:italic;margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--card-border);font-family:'Space Mono',monospace}
+
+/* ── EDUCATION ── */
+.edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:1.1rem}
+.edu-card{padding:1.4rem;background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px}
+.edu-degree{font-family:'Space Grotesk',sans-serif;font-size:14.5px;font-weight:600;color:#fff;margin-bottom:.18rem}
+.edu-field{font-size:12.5px;color:var(--teal-bright);margin-bottom:.45rem;line-height:1.4}
+.edu-inst{font-size:13px;color:var(--muted);margin-bottom:.22rem}
+.edu-year{font-family:'Space Mono',monospace;font-size:11.5px;color:var(--muted-dark)}
+.edu-thesis{margin-top:.7rem;font-size:12.5px;color:var(--muted);font-style:italic;border-top:1px solid var(--card-border);padding-top:.7rem;line-height:1.58}
+.cert-list{display:flex;flex-direction:column;gap:.7rem}
+.cert-item{display:flex;gap:.9rem;align-items:flex-start;padding:.9rem 1.15rem;background:var(--card-bg);border:1px solid var(--card-border);border-radius:8px}
+.cert-icon{width:34px;height:34px;border-radius:7px;background:rgba(13,148,136,.1);border:1px solid rgba(13,148,136,.2);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.cert-name{font-size:13.5px;font-weight:500;color:var(--white);margin-bottom:.12rem}
+.cert-issuer{font-size:12px;color:var(--muted);font-family:'Space Mono',monospace;line-height:1.5}
+
+/* ── CONTACT ── */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.contact-intro p{color:var(--muted);font-size:15px;line-height:1.82;margin-bottom:1rem}
+.contact-intro p strong{color:#fff}
+.contact-links{display:flex;flex-direction:column;gap:.65rem}
+.contact-link{display:flex;align-items:center;gap:.75rem;padding:.85rem 1.2rem;background:var(--card-bg);border:1px solid var(--card-border);border-radius:8px;text-decoration:none;color:var(--white);font-size:13.5px;transition:border-color .2s,background .2s}
+.contact-link:hover{border-color:rgba(13,148,136,.38);background:rgba(13,148,136,.055)}
+.cl-icon{font-size:1rem}
+.cl-label{font-family:'Space Mono',monospace;font-size:10.5px;color:var(--teal-bright);margin-left:auto;letter-spacing:.05em}
+
+footer{text-align:center;padding:2rem;color:var(--muted-dark);font-size:12px;font-family:'Space Mono',monospace;letter-spacing:.04em;border-top:1px solid var(--border)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .about-grid,.contact-grid,.leadership-grid{grid-template-columns:1fr;gap:2rem}
+  .nav-links{display:none}
+  nav{padding:0 1rem}
+  .page-section{padding:3.5rem 1.25rem}
+  .hero-content{padding:5rem 1.25rem 3rem}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">MM · PhD</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#expertise">Expertise</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#standing">Standing</a></li>
+      <li><a href="#leadership">Leadership</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero" style="padding:0;max-width:100%">
+  <canvas id="wave-canvas"></canvas>
+  <div class="hero-content">
+    <p class="hero-eyebrow">PhD · Photonics · R&amp;D Engineer</p>
+    <h1 class="hero-name">Morteza<br><span>Maleki</span></h1>
+    <p class="hero-title">Photonic Sensing &amp; Multiphysics Simulation Engineer</p>
+    <p class="hero-sub">Postdoctoral Researcher · Politecnico di Bari · Available from October 2026</p>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">23</span><span class="stat-label">Publications</span></div>
+      <div class="stat"><span class="stat-num">112</span><span class="stat-label">Citations</span></div>
+      <div class="stat"><span class="stat-num">6</span><span class="stat-label">h-index</span></div>
+      <div class="stat"><span class="stat-num">13.5K</span><span class="stat-label">RG Reads</span></div>
+      <div class="stat"><span class="stat-num">10+</span><span class="stat-label">Yrs COMSOL</span></div>
+    </div>
+    <div class="hero-btns">
+      <a href="#projects" class="btn btn-primary">View Research</a>
+      <a href="#publications" class="btn btn-ghost">Publications</a>
+      <a href="#contact" class="btn btn-ghost">Contact</a>
+    </div>
+    <a href="https://scholar.google.com/citations?user=LmLHjy0AAAAJ" target="_blank" rel="noopener" class="scholar-strip">
+      <span class="s-label">Google Scholar</span>
+      <div class="s-sep"></div>
+      <div class="s-metric"><span class="s-num">112</span><span class="s-lbl">Citations</span></div>
+      <div class="s-metric"><span class="s-num">6</span><span class="s-lbl">h-index</span></div>
+      <div class="s-metric"><span class="s-num">5</span><span class="s-lbl">i10</span></div>
+      <div class="s-sep"></div>
+      <span class="s-arrow">View Profile ↗</span>
+    </a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section id="about" class="page-section">
+  <p class="section-eyebrow">Profile</p>
+  <h2 class="section-title">About Me</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p class="tagline">"I transform complex physical phenomena into functional sensing devices — from concept to publication."</p>
+      <p>I am a postdoctoral research fellow at the Optoelectronics Laboratory of Politecnico di Bari, Italy, leading the simulation-driven design of PIC-based photonic sensors for space applications within the EU-funded <strong>NODES</strong> and <strong>InPhoMiR</strong> projects. Currently based in Bari, Italy — available for new positions from <strong>October 2026</strong>.</p>
+      <p>My work sits at a rare intersection: <strong>deep photonic sensor design</strong> — spanning GMR structures, microring resonators, Bragg gratings, radiation detectors, and integrated optical gyroscopes — combined with <strong>expert-level multiphysics simulation</strong> across electromagnetic, thermal, mechanical, and radiation domains. My COMSOL expertise, built over a decade of consulting and industrial training, is among the deepest in the field.</p>
+      <p>I hold a PhD in Photonics and carry genuine hands-on experience from an <strong>ISO Class 7 cleanroom</strong> — wire bonding, die bonding, packaging of SLDs, diode lasers, and IR detectors. I understand not just the simulation, but the engineering reality behind it.</p>
+      <p>Over 12 years of mentoring graduate researchers and teaching at multiple universities have sharpened my ability to communicate complex physics clearly and build capable teams. I am not a generalist — I am a specialist who knows exactly where depth creates value.</p>
+    </div>
+    <div class="info-block">
+      <div class="info-row"><span class="info-key">Location</span><span class="info-val">Bari, Italy</span></div>
+      <div class="info-row"><span class="info-key">Position</span><span class="info-val">Postdoctoral Researcher</span></div>
+      <div class="info-row"><span class="info-key">Available</span><span class="info-val" style="color:var(--teal-glow)">From October 2026</span></div>
+      <div class="info-row"><span class="info-key">Email</span><span class="info-val"><a href="mailto:maleki.morteza.ac@gmail.com">maleki.morteza.ac@gmail.com</a></span></div>
+      <div class="info-row"><span class="info-key">LinkedIn</span><span class="info-val"><a href="https://linkedin.com/in/morteza-maleki" target="_blank">morteza-maleki ↗</a></span></div>
+      <div class="info-row"><span class="info-key">ORCiD</span><span class="info-val"><a href="https://orcid.org/0000-0003-4856-2072" target="_blank">0000-0003-4856-2072 ↗</a></span></div>
+      <div class="info-row"><span class="info-key">Scholar</span><span class="info-val"><a href="https://scholar.google.com/citations?user=LmLHjy0AAAAJ" target="_blank">View Profile ↗</a></span></div>
+      <div class="info-row"><span class="info-key">RG</span><span class="info-val"><a href="https://researchgate.net/profile/Morteza-Maleki-5" target="_blank">ResearchGate ↗</a></span></div>
+      <div class="info-row"><span class="info-key">WoS ID</span><span class="info-val">ABH-6234-2020</span></div>
+      <div class="info-row"><span class="info-key">Languages</span><span class="info-val">English (Professional) · Persian (Native) · Italian (Elementary)</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EXPERTISE -->
+<section id="expertise" class="page-section alt-bg">
+  <p class="section-eyebrow">Technical Skills</p>
+  <h2 class="section-title">Core Expertise</h2>
+  <div class="skills-grid">
+
+    <div class="skill-card">
+      <div class="skill-icon">🔬</div>
+      <h3>Photonic Sensing & PIC Design</h3>
+      <div class="tags">
+        <span class="tag tag-teal">GMR Sensors</span>
+        <span class="tag tag-teal">Microring Resonators</span>
+        <span class="tag tag-teal">Bragg Gratings</span>
+        <span class="tag tag-teal">Fabry-Perot</span>
+        <span class="tag tag-teal">Radiation Sensors</span>
+        <span class="tag tag-teal">Gas Sensors</span>
+        <span class="tag tag-teal">Optical Gyroscopes</span>
+        <span class="tag tag-teal">Strain Sensors</span>
+        <span class="tag tag-teal">Refractive Index Sensors</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-icon">⚙️</div>
+      <h3>Simulation Tools</h3>
+      <div class="tags">
+        <span class="tag tag-gold">COMSOL Multiphysics ★ Expert</span>
+        <span class="tag tag-gold">MATLAB LiveLink ★</span>
+        <span class="tag tag-gold">Application Builder ★</span>
+        <span class="tag tag-teal">Lumerical FDTD / MODE</span>
+        <span class="tag tag-teal">Lumerical INTERCONNECT</span>
+        <span class="tag tag-teal">Geant4</span>
+        <span class="tag tag-teal">OptiSystem</span>
+        <span class="tag tag-teal">MATLAB</span>
+        <span class="tag tag-muted">Python (basic)</span>
+        <span class="tag tag-muted">C/C++ (working)</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-icon">🌡️</div>
+      <h3>Multiphysics Domains</h3>
+      <div class="tags">
+        <span class="tag tag-teal">Optical–Thermal–EM–Mechanical</span>
+        <span class="tag tag-teal">Radiation & Particle Transport</span>
+        <span class="tag tag-teal">Heat Transfer</span>
+        <span class="tag tag-teal">Thermo-Optical Effects</span>
+        <span class="tag tag-teal">Electro-Optics</span>
+        <span class="tag tag-teal">Optomechanics</span>
+        <span class="tag tag-teal">Topology Optimization</span>
+        <span class="tag tag-teal">Inverse Design</span>
+        <span class="tag tag-teal">Eigenfrequency Analysis</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-icon">💡</div>
+      <h3>PIC Platforms & Materials</h3>
+      <div class="tags">
+        <span class="tag tag-teal">Silicon Photonics (SOI)</span>
+        <span class="tag tag-teal">Silicon Nitride (SiN)</span>
+        <span class="tag tag-teal">III-V / InP</span>
+        <span class="tag tag-teal">PDK Workflows (KLayout)</span>
+        <span class="tag tag-teal">Fabrication-Aware Design</span>
+        <span class="tag tag-teal">DFM</span>
+        <span class="tag tag-purple">Plasmonics</span>
+        <span class="tag tag-purple">Graphene Photonics</span>
+        <span class="tag tag-purple">2D Materials</span>
+        <span class="tag tag-purple">Metasurfaces</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-icon">🏭</div>
+      <h3>Fabrication & Packaging</h3>
+      <div class="tags">
+        <span class="tag tag-teal">ISO Class 7 Cleanroom</span>
+        <span class="tag tag-teal">Wire Bonding</span>
+        <span class="tag tag-teal">Die Bonding & Dicing</span>
+        <span class="tag tag-teal">Vacuum Packaging</span>
+        <span class="tag tag-teal">PECVD</span>
+        <span class="tag tag-teal">KOH / MACE Etching</span>
+        <span class="tag tag-teal">Sol-Gel Coating</span>
+        <span class="tag tag-teal">Hydrothermal Growth</span>
+        <span class="tag tag-teal">ZnO Nanostructures</span>
+        <span class="tag tag-teal">Si Surface Texturing</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-icon">⚡</div>
+      <h3>Electronics & Instrumentation</h3>
+      <div class="tags">
+        <span class="tag tag-teal">RF & Microwave Systems</span>
+        <span class="tag tag-teal">Analog/Digital Circuit Design</span>
+        <span class="tag tag-teal">Hardware Fault Diagnosis</span>
+        <span class="tag tag-teal">Spectrum Analyzers</span>
+        <span class="tag tag-teal">Oscilloscopes / I-V Systems</span>
+        <span class="tag tag-teal">Tunable Lasers</span>
+        <span class="tag tag-teal">Microcontrollers</span>
+        <span class="tag tag-teal">Laser Driver Design</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="page-section">
+  <p class="section-eyebrow">Career</p>
+  <h2 class="section-title">Professional Experience</h2>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-header">
+        <span class="tl-role">Postdoctoral Research Fellow – Integrated Photonics for Space</span>
+        <span class="tl-date">Jun 2024 – Present</span>
+      </div>
+      <p class="tl-org">Politecnico di Bari – Optoelectronics Laboratory (Prof. C. Ciminelli) · Bari, Italy</p>
+      <div class="tl-body">
+        <p>Leading advanced R&D, multiphysics modeling, and design optimization for next-generation PIC-based sensors across two EU-funded flagship projects.</p>
+        <ul>
+          <li><strong>NODES (Jun 2024 – Oct 2025):</strong> Radiation-hardened, space-class photonic sensors for LEO applications. Conceived and led the photonic bolometric gamma-ray detector — architecture, Geant4 radiation modeling, FEM thermal and mechanical simulations, manuscript drafting. Published in <em>Scientific Reports</em> (Nature, 2026). Achieved sensitivity of 1.52 fm/MeV.</li>
+          <li>Engineered Si₃N₄ suspended Bragg grating reflectors for high-precision microdebris strain sensing at 1550 nm; presented at ICOP 2024 (Florence).</li>
+          <li><strong>InPhoMiR (Oct 2025 – Oct 2026):</strong> Active photonic integrated systems and optical gyroscopes for high-sensitivity navigation. Designing InP-based active/passive photonic gyroscopes. Modeling and optimizing active micro-ring resonators to enhance Q-factor and rotation-sensing scale factor.</li>
+          <li>Collaborated across photonics, thermal analysis, optoelectronics, and optofluidics teams.</li>
+        </ul>
+        <div class="tl-highlight">
+          <strong>Key output:</strong> Scientific Reports (Nature) 2026 · IAA-HIS 2026 · ICOP 2024 · EU Projects: NODES & InPhoMiR
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-header">
+        <span class="tl-role">R&D Engineer – Optoelectronics Packaging</span>
+        <span class="tl-date">Jan – Jun 2024</span>
+      </div>
+      <p class="tl-org">MK Group · Industrial Electronics & Optoelectronics Sector · Karaj, Iran</p>
+      <div class="tl-body">
+        <ul>
+          <li>Led R&D and process development for wafer-level optoelectronic packaging in an <strong>ISO Class 7 cleanroom</strong>: die bonding, wire bonding, dicing, and optical alignment for high-power diode lasers, SLDs, LEDs, and IR detectors.</li>
+          <li>Developed advanced thermal dissipation and vacuum packaging solutions for space- and industrial-grade photonic components.</li>
+          <li>Designed customized laser driver setups for precision power control and calibration of active optical components.</li>
+          <li>Contributed to establishing the technical heritage and structural baseline for <strong>integrated photonic gyroscope development</strong>.</li>
+          <li>Managed maintenance of industrial automatic LED sorters; engineered manual LED test modules for high-precision calibration.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-header">
+        <span class="tl-role">Multiphysics Simulation Consultant & Technical Trainer</span>
+        <span class="tl-date">Mar 2014 – Jan 2024</span>
+      </div>
+      <p class="tl-org">COMSOLfa & Iran Nanotechnology Innovation Council (INIC) · Concurrent with academic roles</p>
+      <div class="tl-body">
+        <p>Ten years of simulation consulting and technical training for industrial R&D teams, universities, and postgraduate researchers.</p>
+        <ul>
+          <li>Delivered <strong>280+ hours</strong> of specialized COMSOL instruction across universities, research centers, and industry (including 85 hrs of formal online curricula via COMSOLfa).</li>
+          <li>Industrial clients: Optics Industries Isfahan, Semiconductor Devices Co. (Tehran), National Nanotechnology Initiative, Vali-Asr University, Yasouj University.</li>
+          <li>Conducted advanced mentoring for PhD and MSc researchers through complex thesis-level simulation challenges, boundary condition setup, and model validation.</li>
+          <li>Engineered tailored multiphysics workflows across photonics, biomedical (HIFU, photo-thermal therapy), automotive smart-glass, geophysics, and solar domains.</li>
+          <li>Assisted research groups in benchmarking experimental data against FDTD and FEM models, reducing fabrication iteration costs.</li>
+        </ul>
+        <div class="tl-highlight">
+          <strong>Online courses published:</strong> Wave Optics (30 hrs) · Semiconductor & Optoelectronics (40 hrs) · COMSOL General (60 hrs) · Nanotechnology Applications (15 hrs)
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-header">
+        <span class="tl-role">PhD Researcher – Photonic Gas Sensors</span>
+        <span class="tl-date">Sep 2015 – Sep 2022</span>
+      </div>
+      <p class="tl-org">Shahid Bahonar University of Kerman – Photonics Group</p>
+      <div class="tl-body">
+        <p>Multi-phase doctoral research program on gas sensors based on semiconductor and photonic nanostructures.</p>
+        <ul>
+          <li><strong>Phase 1 – Nanofabrication:</strong> KOH/IPA silicon texturing into micro-pyramids; MACE synthesis of vertical silicon nanowires; hydrothermal growth of gas-sensitive ZnO nano-rod arrays.</li>
+          <li><strong>Phase 2 – Analytical Framework:</strong> Derived closed-form analytical sensitivity equations for GMR sensors in TE and TM modes; developed systematic structure-selection design approach. Published in IEEE Sensors Journal & JOSA B (2022).</li>
+          <li><strong>Phase 3 – Dynamic Tunability:</strong> Designed MEMS-cantilever and double-graphene layer configurations for selective gas detection and resonance wavelength compensation.</li>
+        </ul>
+        <div class="tl-highlight">
+          <strong>Output:</strong> 8 peer-reviewed journal papers (IEEE Sensors J., JOSA B) · 4 international conference papers (Frontiers in Optics, USA; Optica Sensing Congress, Munich)
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-header">
+        <span class="tl-role">Electronics Engineer – RF & Radar Systems</span>
+        <span class="tl-date">Sep 2005 – Dec 2010</span>
+      </div>
+      <p class="tl-org">Specialized Electronic Systems · Mashhad, Iran</p>
+      <div class="tl-body">
+        <ul>
+          <li>Maintenance, calibration, and hardware troubleshooting of high-frequency RF systems, ground-to-air communication units, and navigational aid systems.</li>
+          <li>Diagnostics and tuning of transmitter/receiver modules, waveguides, and antenna arrays in microwave frequency bands.</li>
+          <li>High-precision calibration using spectrum analyzers, network analyzers, and oscilloscopes; diagnosed circuit-level faults in high-reliability environments.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects" class="page-section alt-bg">
+  <p class="section-eyebrow">R&D Portfolio</p>
+  <h2 class="section-title">Research & Engineering Projects</h2>
+  <div class="projects-grid">
+
+    <div class="proj-card">
+      <span class="proj-badge badge-space">Space · Postdoc</span>
+      <h3>Photonic Bolometric Radiation Sensor</h3>
+      <p>Conceived and led the full design of a PIC-based bolometric sensor for gamma-ray detection (10–270 keV) targeting CubeSat platforms and astronaut wearable dosimetry. Performed all Geant4 radiation modeling and coupled FEM thermal and mechanical simulations. Gold absorber selected for optimal performance.</p>
+      <p class="proj-meta">Sensitivity 1.52 fm/MeV · Scientific Reports (Nature) 2026 · IAA-HIS 2026</p>
+    </div>
+
+    <div class="proj-card">
+      <span class="proj-badge badge-space">Space · Postdoc</span>
+      <h3>InP Optical Gyroscope – Active PIC</h3>
+      <p>Designing high-sensitivity optical gyroscopes utilizing Indium Phosphide (InP) active/passive photonic integration. Modeling and optimizing active micro-ring resonator configurations to enhance Q-factor and rotation-sensing scale factor for inertial navigation applications.</p>
+      <p class="proj-meta">InPhoMiR Project · 2025–2026</p>
+    </div>
+
+    <div class="proj-card">
+      <span class="proj-badge badge-space">Space · Postdoc</span>
+      <h3>Si₃N₄ Strain Sensor for Microdebris Detection</h3>
+      <p>Proposed a suspended Bragg grating reflector in Si₃N₄ integratable into PICs, designed for 1550 nm operation and spaceborne LEO microdebris impact detection. TMM and FEM comparison; eigenfrequency analysis for spaceborne mechanical reliability.</p>
+      <p class="proj-meta">ICOP 2024 · Florence, Italy · NODES Project</p>
+    </div>
+
+    <div class="proj-card">
+      <span class="proj-badge badge-phd">PhD Research</span>
+      <h3>GMR Photonic Gas Sensor Platform</h3>
+      <p>Conceived the original analytical sensitivity framework for GMR photonic sensors and developed a systematic structure-selection methodology covering TE and TM modes. Designed a plasmonic NIR gas sensor based on double-layer graphene nano-gratings. Fabricated ZnO nanostructures and textured silicon for experimental validation.</p>
+      <p class="proj-meta">IEEE Sensors J. 2022 · JOSA B 2022 & 2020</p>
+    </div>
+
+    <div class="proj-card">
+      <span class="proj-badge badge-phd">PhD Research</span>
+      <h3>ZnO Nanostructure Fabrication & Silicon Texturing</h3>
+      <p>Hands-on nanofabrication work in the context of gas-sensitive photonic sensor development. Fabricated ZnO thin films, nanowires, and nanodendrites via sol-gel and hydrothermal methods. Performed silicon surface texturing using KOH/IPA wet etching and Metal-Assisted Chemical Etching (MACE) to produce well-aligned vertical Si nanowires for light trapping and sensing applications.</p>
+      <p class="proj-meta">Journal of Applied Chemistry 2020 · ICNN 2018 · Shahid Bahonar University</p>
+    </div>
+
+    <div class="proj-card">
+      <span class="proj-badge badge-industry">Industry Contract</span>
+      <h3>TiO₂ Smart-Glass Heater Optimization</h3>
+      <p>Developed a COMSOL–MATLAB LiveLink inverse-design workflow for automotive smart-glass thermal management. Reduced thermal gradients from &gt;50 K to a few Kelvins. Proposed practical TiO₂ deposition strategies via hybrid sol-gel pyrolysis.</p>
+      <p class="proj-meta">Automotive R&D · Industrial Contract · 2017</p>
+    </div>
+
+    <div class="proj-card">
+      <span class="proj-badge badge-industry">Industry Contract</span>
+      <h3>Capacitive Resistivity Imaging System</h3>
+      <p>Reconstructed and optimized a multiphysics sensing subsystem for underground void and tunnel detection. Developed electrostatic and low-frequency EM models for non-galvanic capacitive coupling; optimized geometric and electrical sensing parameters.</p>
+      <p class="proj-meta">Industrial Geophysics Sector · 2018–2019</p>
+    </div>
+
+    <div class="proj-card">
+      <span class="proj-badge badge-bio">Biomedical</span>
+      <h3>Photo-thermal Therapy & HIFU Modeling</h3>
+      <p>Modeled laser, RF, and HIFU heat sources in biological tissues using Penne's bioheat equation with nonlinear effects. Included nano-plasmonic particle absorption and RF electromagnetic wave absorption by magnetic particles.</p>
+      <p class="proj-meta">Biomedical Multiphysics Consulting · 2016–2022</p>
+    </div>
+
+    <div class="proj-card">
+      <span class="proj-badge badge-msc">MSc Thesis</span>
+      <h3>Solar Cell Efficiency via Thermoelectric Harvesting</h3>
+      <p>Developed COMSOL coupled thermal and thermoelectric models for crystalline silicon solar cells. Investigated Bi₂Te₃ thermoelectric generator integration for waste-heat scavenging. Analyzed figure of merit (ZT), Seebeck coefficient, and conversion efficiency under varying irradiance conditions.</p>
+      <p class="proj-meta">MSc Thesis · Univ. of Sistan and Baluchestan · 2011–2014</p>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PUBLICATIONS -->
+<section id="publications" class="page-section">
+  <p class="section-eyebrow">Research Output</p>
+  <h2 class="section-title">Publications</h2>
+
+  <div class="pub-stats-row">
+    <div class="pub-stat-pill"><strong>23</strong><span>Total Publications</span></div>
+    <div class="pub-stat-pill"><strong>112</strong><span>Citations</span></div>
+    <div class="pub-stat-pill"><strong>6</strong><span>h-index</span></div>
+    <div class="pub-stat-pill"><strong>5</strong><span>i10-index</span></div>
+    <div class="pub-stat-pill"><strong>13,494</strong><span>RG Reads</span></div>
+    <a href="https://scholar.google.com/citations?user=LmLHjy0AAAAJ" target="_blank" rel="noopener" style="text-decoration:none">
+      <div class="pub-stat-pill" style="color:var(--teal-bright);border-color:rgba(13,148,136,.3);cursor:pointer">Google Scholar ↗</div>
+    </a>
+  </div>
+
+  <p style="font-size:12px;color:var(--muted-dark);margin-bottom:1.4rem;font-family:'Space Mono',monospace">Gold left border = paper where Morteza conceived, led, or held primary intellectual ownership</p>
+
+  <div class="pub-filters">
+    <button class="pfbtn active" onclick="filterPubs('all',this)">All (23)</button>
+    <button class="pfbtn" onclick="filterPubs('journal',this)">Journal Articles</button>
+    <button class="pfbtn" onclick="filterPubs('conference',this)">Conference Papers</button>
+    <button class="pfbtn" onclick="filterPubs('led',this)">★ Led / Conceived</button>
+  </div>
+
+  <div class="pub-list" id="pub-list">
+
+    <div class="pub-year-sep" data-sep>— 2026 —</div>
+    <div class="pub-item pub-led" data-type="journal" data-led="1">
+      <p class="pub-title">Design of a photonic bolometric sensor using microring resonators for high-energy radiation detection</p>
+      <p class="pub-venue">Scientific Reports (Nature) · 2026</p>
+      <p class="pub-note">★ Conceived, designed, and led the full study</p>
+    </div>
+    <div class="pub-item" data-type="journal">
+      <p class="pub-title">Thermo-optical properties of multipolar scatterers in triangular gold nanoparticles</p>
+      <p class="pub-venue">Micro and Nanostructures (Elsevier) · 2026</p>
+    </div>
+    <div class="pub-item" data-type="journal">
+      <p class="pub-title">Efficient Nanoparticle Sorting Through an Optofluidic Waveguide Splitter for Early Cancer Diagnosis</p>
+      <p class="pub-venue">Applied Sciences (MDPI) · 2026</p>
+    </div>
+    <div class="pub-item pub-conf" data-type="conference">
+      <p class="pub-title">Radiation-Hardened Bolometric Photonic Integrated Sensor for Real-Time Astronaut Dosimetry</p>
+      <p class="pub-venue">IAA Human in Space Symposium (IAA-HIS) · Montecatini, Italy · April 2026</p>
+    </div>
+
+    <div class="pub-year-sep" data-sep>— 2025 —</div>
+    <div class="pub-item" data-type="journal">
+      <p class="pub-title">Thermo-Optical Properties of Gold Nanoparticles: Shape and Size Effects</p>
+      <p class="pub-venue">Plasmonics (Springer Nature) · 2025</p>
+    </div>
+
+    <div class="pub-year-sep" data-sep>— 2024 —</div>
+    <div class="pub-item pub-led" data-type="journal" data-led="1">
+      <p class="pub-title">Thermal Modeling of Perovskite Solar Cells: Electron and Hole Transfer Layers Effects</p>
+      <p class="pub-venue">Optik · 2024</p>
+      <p class="pub-note">★ Lead contributor: conceptualization, methodology, project administration, supervision</p>
+    </div>
+    <div class="pub-item pub-conf" data-type="conference">
+      <p class="pub-title">Design of a Photonic Strain Sensor based on a Suspended Bragg Grating Reflector for Spaceborne Microdebris Detection</p>
+      <p class="pub-venue">ICOP · Florence, Italy · June 2024</p>
+    </div>
+
+    <div class="pub-year-sep" data-sep>— 2023 —</div>
+    <div class="pub-item pub-led" data-type="journal" data-led="1">
+      <p class="pub-title">Plasmonic Perfect Absorber Based on Graphene and Its Sensing Application</p>
+      <p class="pub-venue">Plasmonics (Springer Nature) · 2023</p>
+      <p class="pub-note">★ Co-conceived; wrote first draft</p>
+    </div>
+    <div class="pub-item pub-conf" data-type="conference">
+      <p class="pub-title">Plasmonic Gas Sensor based on Graphene Sheet and Trapezoidal Nanotrenches on Silver Substrate</p>
+      <p class="pub-venue">Optica Sensing Congress · Munich, Germany · July 2023</p>
+    </div>
+
+    <div class="pub-year-sep" data-sep>— 2022 —</div>
+    <div class="pub-item pub-led" data-type="journal" data-led="1">
+      <p class="pub-title">Analytical Investigation and Systematic Design Approach for High-Sensitivity GMR Sensors with Graphene-Enabled Tunability</p>
+      <p class="pub-venue">IEEE Sensors Journal · 2022</p>
+      <p class="pub-note">★ Conceived the analytical framework and methodology</p>
+    </div>
+    <div class="pub-item pub-led" data-type="journal" data-led="1">
+      <p class="pub-title">Guided Mode Resonance Sensors: Different Schemes for Different Applications</p>
+      <p class="pub-venue">Journal of the Optical Society of America B (JOSA B) · 2022</p>
+      <p class="pub-note">★ Conceived the analytical framework and methodology</p>
+    </div>
+    <div class="pub-item" data-type="journal">
+      <p class="pub-title">Investigation of 2D Materials Effect on Few-Mode Fiber Optical Temperature and Strain Sensors</p>
+      <p class="pub-venue">International Journal of Optics and Photonics · 2022</p>
+    </div>
+    <div class="pub-item" data-type="journal">
+      <p class="pub-title">Studying the Role of Ion Migration on Perovskite LEDs by Steady-State Approach</p>
+      <p class="pub-venue">AUT Journal of Electrical Engineering (AUTJEE) · 2022</p>
+    </div>
+    <div class="pub-item" data-type="journal">
+      <p class="pub-title">Investigation of the Effect of Polymeric and Non-Polymeric Materials in the Hole Transfer Layer on Perovskite Solar Cells</p>
+      <p class="pub-venue">KSU Journal of Engineering Sciences · 2022</p>
+    </div>
+    <div class="pub-item pub-led pub-conf" data-type="conference" data-led="1">
+      <p class="pub-title">Gate-Controlled Graphene-based GMR Methane Sensor for Implementation in Optical ICs</p>
+      <p class="pub-venue">Frontiers in Optics (FiO) · Rochester, USA · October 2022</p>
+      <p class="pub-note">★ Original idea and conception</p>
+    </div>
+    <div class="pub-item pub-conf" data-type="conference">
+      <p class="pub-title">Optocoupler Modeling for Quantum Random Code Generation</p>
+      <p class="pub-venue">Frontiers in Optics (FiO) · Rochester, USA · October 2022</p>
+    </div>
+
+    <div class="pub-year-sep" data-sep>— 2021 —</div>
+    <div class="pub-item" data-type="journal">
+      <p class="pub-title">Design of an Efficient Fabry-Perot Biosensor Using High-Contrast Slanted Grating Couplers on a Dual-Core Single-Mode Optical Fiber Tip</p>
+      <p class="pub-venue">IEEE Sensors Journal · 2021</p>
+    </div>
+    <div class="pub-item pub-conf" data-type="conference">
+      <p class="pub-title">Investigation of Ion Migration Effects on Perovskite LEDs</p>
+      <p class="pub-venue">3rd Conference on Microelectronics · 2021</p>
+    </div>
+
+    <div class="pub-year-sep" data-sep>— 2020 —</div>
+    <div class="pub-item" data-type="journal">
+      <p class="pub-title">Design and Development of a Near-Infrared Plasmonic Gas Sensor Based on Graphene Nano-Gratings</p>
+      <p class="pub-venue">JOSA B · 2020</p>
+    </div>
+    <div class="pub-item" data-type="journal">
+      <p class="pub-title">Different Effective Parameters on the Texturization of Silicon in KOH and IPA Solution and its Hydrophilic Behavior</p>
+      <p class="pub-venue">Journal of Applied Chemistry, Semnan University · 2020</p>
+    </div>
+
+    <div class="pub-year-sep" data-sep>— 2018 —</div>
+    <div class="pub-item pub-conf" data-type="conference">
+      <p class="pub-title">Effect of Seed Layer on the Growth of ZnO Nano-Rod Arrays</p>
+      <p class="pub-venue">7th International Congress on Nanoscience and Nanotechnology · Tehran · September 2018</p>
+    </div>
+    <div class="pub-item pub-conf" data-type="conference">
+      <p class="pub-title">ZnO Nanostructure Growth on Micro-Pyramidal Silicon Substrate</p>
+      <p class="pub-venue">7th International Congress on Nanoscience and Nanotechnology · Tehran · September 2018</p>
+    </div>
+
+    <div class="pub-year-sep" data-sep>— 2014 —</div>
+    <div class="pub-item" data-type="journal">
+      <p class="pub-title">Design and Simulation of a Drug Delivery Micropump Controller Using Surface Acoustic Wave Correlator</p>
+      <p class="pub-venue">Journal of Biomedical Engineering · 2014</p>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- COLLABORATIONS -->
+<section id="collaborations" class="page-section alt-bg">
+  <p class="section-eyebrow">International Network</p>
+  <h2 class="section-title">Research Collaborations</h2>
+  <div class="collab-grid">
+    <div class="collab-card">
+      <h4>Prof. Pierre Berini — University of Ottawa, Canada</h4>
+      <p>Co-authored work on high-contrast slanted grating coupler-based Fabry-Perot biosensor on dual-core optical fiber tip.</p>
+      <p class="collab-paper">IEEE Sensors Journal · 2021</p>
+    </div>
+    <div class="collab-card">
+      <h4>Prof. Bruno Palpant — CentraleSupélec, Université Paris-Saclay</h4>
+      <p>Investigation of thermo-optical properties of gold nanoparticles — shape, size, and multipolar scattering effects for plasmonic applications.</p>
+      <p class="collab-paper">Plasmonics 2025 · Micro & Nanostructures 2026</p>
+    </div>
+    <div class="collab-card">
+      <h4>Amirkabir University of Technology, Tehran</h4>
+      <p>Joint study on the effect of 2D materials on few-mode fiber optical temperature and strain sensors.</p>
+      <p class="collab-paper">Int. J. Optics and Photonics · 2022</p>
+    </div>
+    <div class="collab-card">
+      <h4>Tarbiat Modares University, Tehran</h4>
+      <p>Led perovskite device research focused on <strong>ion migration modeling in perovskite LEDs</strong> — steady-state and dynamic approaches examining ion drift, recombination, and luminescence efficiency as functions of electric field and temperature.</p>
+      <p class="collab-paper">AUTJEE 2022 · 3rd Conference on Microelectronics 2021</p>
+    </div>
+    <div class="collab-card">
+      <h4>University of Tabriz</h4>
+      <p>Collaborative thermal modeling of <strong>perovskite solar cells</strong> — investigated electron and hole transfer layer (ETL/HTL) effects on thermal behavior, operating temperature distribution, and efficiency under varying irradiance conditions.</p>
+      <p class="collab-paper">Optik 2024 · KSU Journal of Engineering Sciences 2022</p>
+    </div>
+    <div class="collab-card">
+      <h4>Politecnico di Bari — Optofluidics Group</h4>
+      <p>Optofluidic nanoparticle sorting platform for early cancer diagnosis via size-selective photonic waveguide splitter.</p>
+      <p class="collab-paper">Applied Sciences (MDPI) · 2026</p>
+    </div>
+    <div class="collab-card">
+      <h4>University of Sistan and Baluchestan</h4>
+      <p>Long-term collaboration on nanostructure fabrication, solar cell thermal modeling, and optical sensor design across multiple publications.</p>
+      <p class="collab-paper">Multiple publications 2018–2026</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SCIENTIFIC STANDING -->
+<section id="standing" class="page-section">
+  <p class="section-eyebrow">Scientific Community</p>
+  <h2 class="section-title">Scientific Standing</h2>
+
+  <div class="metrics-row">
+    <div class="metric-card"><div class="metric-num">112</div><div class="metric-label">Citations</div></div>
+    <div class="metric-card"><div class="metric-num">6</div><div class="metric-label">h-index</div></div>
+    <div class="metric-card"><div class="metric-num">5</div><div class="metric-label">i10-index</div></div>
+    <div class="metric-card"><div class="metric-num">13.5K</div><div class="metric-label">RG Reads</div></div>
+    <div class="metric-card"><div class="metric-num">23</div><div class="metric-label">Publications</div></div>
+  </div>
+
+  <div style="margin-bottom:.5rem;font-family:'Space Mono',monospace;font-size:11px;color:var(--muted)">Citations per year (Google Scholar)</div>
+  <div class="citation-chart">
+    <div class="cc-bar-wrap"><span class="cc-num">5</span><div class="cc-bar" style="height:10%"></div><span class="cc-year">2021</span></div>
+    <div class="cc-bar-wrap"><span class="cc-num">24</span><div class="cc-bar" style="height:46%"></div><span class="cc-year">2022</span></div>
+    <div class="cc-bar-wrap"><span class="cc-num">31</span><div class="cc-bar" style="height:60%;background:var(--teal-bright)"></div><span class="cc-year">2023</span></div>
+    <div class="cc-bar-wrap"><span class="cc-num">22</span><div class="cc-bar" style="height:42%"></div><span class="cc-year">2024</span></div>
+    <div class="cc-bar-wrap"><span class="cc-num">17</span><div class="cc-bar" style="height:33%"></div><span class="cc-year">2025</span></div>
+    <div class="cc-bar-wrap"><span class="cc-num">13+</span><div class="cc-bar" style="height:25%;background:var(--gold)"></div><span class="cc-year">2026</span></div>
+  </div>
+
+  <h3 class="subsection-title">Peer Review</h3>
+  <div class="standing-grid">
+    <div class="standing-card"><div class="standing-dot"></div><div class="standing-text"><h4>OPTICA Publishing Group</h4><p>Certified Reviewer · Optics Express · JOSA B · Applied Optics · Optics Letters</p></div></div>
+    <div class="standing-card"><div class="standing-dot"></div><div class="standing-text"><h4>Springer-Nature</h4><p>Invited Reviewer · Plasmonics · Micro and Nanostructures</p></div></div>
+    <div class="standing-card"><div class="standing-dot"></div><div class="standing-text"><h4>IEEE</h4><p>Invited Reviewer · IEEE Sensors Journal</p></div></div>
+    <div class="standing-card"><div class="standing-dot"></div><div class="standing-text"><h4>IOP Publishing</h4><p>Invited Reviewer</p></div></div>
+    <div class="standing-card"><div class="standing-dot"></div><div class="standing-text"><h4>MDPI</h4><p>Invited Reviewer · Applied Sciences · Sensors</p></div></div>
+  </div>
+
+  <h3 class="subsection-title">Membership & Identifiers</h3>
+  <div class="standing-grid">
+    <div class="standing-card"><div class="standing-dot gold"></div><div class="standing-text"><h4>OPTICA Member</h4><p>Since 2022</p></div></div>
+    <div class="standing-card"><div class="standing-dot gold"></div><div class="standing-text"><h4>Web of Science Researcher ID</h4><p>ABH-6234-2020 · Publons profile active</p></div></div>
+    <div class="standing-card"><div class="standing-dot gold"></div><div class="standing-text"><h4>ORCiD</h4><p>0000-0003-4856-2072</p></div></div>
+  </div>
+
+  <h3 class="subsection-title">Conference & Event Organization</h3>
+  <div class="standing-grid">
+    <div class="standing-card"><div class="standing-dot"></div><div class="standing-text"><h4>Executive Committee Member</h4><p>19th Conference on Optics & Photonics · 2012</p></div></div>
+    <div class="standing-card"><div class="standing-dot"></div><div class="standing-text"><h4>Executive Committee Member</h4><p>1st Conference on Heat & Mass Transfer · 2012</p></div></div>
+    <div class="standing-card"><div class="standing-dot"></div><div class="standing-text"><h4>Executive Committee Member</h4><p>1st–3rd Nanotechnology Workshops · 2012–2013</p></div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- LEADERSHIP & MENTORING -->
+<section id="leadership" class="page-section alt-bg">
+  <p class="section-eyebrow">People & Knowledge</p>
+  <h2 class="section-title">Leadership & Mentoring</h2>
+  <p style="color:var(--muted);font-size:15px;max-width:680px;margin-bottom:2.5rem;line-height:1.8">Over 12 years of academic and industrial training have built a consistent track record of developing technical talent — from BSc students navigating their first lab to PhD researchers working through complex multiphysics simulations.</p>
+
+  <div class="leadership-grid">
+    <div class="leadership-card">
+      <h3>Industrial Simulation Training</h3>
+      <div class="leadership-stat"><span class="big">280+</span><span class="unit">hours delivered</span></div>
+      <ul class="leadership-items">
+        <li>Designed and delivered advanced COMSOL curricula for <strong>industrial R&D teams</strong> at Optics Industries Isfahan and Semiconductor Devices Co. (Tehran)</li>
+        <li>Trained engineering teams to build their own high-fidelity multiphysics models — reducing dependence on external consultants</li>
+        <li>Clients included National Nanotechnology Initiative, Vali-Asr University, Yasouj University</li>
+        <li>Online courses reached engineers and researchers across multiple countries</li>
+      </ul>
+      <p class="comsol-hours-note">Includes 85 hrs formal online curricula (COMSOLfa) + 195+ hrs industrial & university sessions</p>
+    </div>
+
+    <div class="leadership-card">
+      <h3>Academic Mentoring & Supervision</h3>
+      <div class="leadership-stat"><span class="big">12+</span><span class="unit">years · multiple universities</span></div>
+      <ul class="leadership-items">
+        <li>Mentored <strong>PhD and MSc researchers</strong> through thesis-level simulation challenges, model validation, and publication workflows</li>
+        <li>Supervised <strong>BSc final-year capstone projects</strong> in electronics hardware, testing, and experimental validation</li>
+        <li>Directed hands-on engineering laboratories; structured practical modules and trained students in circuit troubleshooting</li>
+        <li>Developed strong conflict-resolution and team management skills through years of supervising diverse student groups in high-pressure lab environments</li>
+        <li>Institutions: Shahid Bahonar University · University of Sistan & Baluchestan · Technical & Vocational University · Hatef HEI · Khavaran HEI</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Scientific Talks & Invited Lectures</h3>
+  <div class="standing-grid">
+    <div class="standing-card"><div class="standing-dot"></div><div class="standing-text"><h4>Thermal Analysis in Solar Cells</h4><p>Univ. of Sistan & Baluchestan · 2015</p></div></div>
+    <div class="standing-card"><div class="standing-dot"></div><div class="standing-text"><h4>Nano-Electronic and Nano-Optical Devices</h4><p>5th Nanotechnology Workshop · 2015</p></div></div>
+    <div class="standing-card"><div class="standing-dot"></div><div class="standing-text"><h4>Applications of Nanotechnology in Industry</h4><p>Shahid Chamran Technical Faculty · 2016</p></div></div>
+    <div class="standing-card"><div class="standing-dot"></div><div class="standing-text"><h4>Nanotechnology: Opportunities and Challenges</h4><p>Shahid Chamran Technical Faculty · 2019</p></div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EDUCATION -->
+<section id="education" class="page-section">
+  <p class="section-eyebrow">Academic Background</p>
+  <h2 class="section-title">Education</h2>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <p class="edu-degree">PhD</p>
+      <p class="edu-field">Electrical & Electronics Engineering · Photonics</p>
+      <p class="edu-inst">Shahid Bahonar University of Kerman</p>
+      <p class="edu-year">2015 – 2022 · GPA 16.8/20</p>
+      <p class="edu-thesis">Design and Analysis of Gas Sensors Based on Photonic Nanostructures<br>Supervisors: Dr. Mahdieh Mehran · Dr. Arash Mokhtari</p>
+    </div>
+    <div class="edu-card">
+      <p class="edu-degree">MSc</p>
+      <p class="edu-field">Electrical & Electronics Engineering · Optoelectronics</p>
+      <p class="edu-inst">University of Sistan and Baluchestan</p>
+      <p class="edu-year">2011 – 2014 · GPA 17.8/20</p>
+      <p class="edu-thesis">Crystalline Solar Cell Efficiency Improvement via Thermoelectric Generator<br>Supervisors: Dr. T. Fanaeie Sheikholeslami · Dr. A. Behzadmehr</p>
+    </div>
+    <div class="edu-card">
+      <p class="edu-degree">BSc</p>
+      <p class="edu-field">Electrical & Electronics Engineering</p>
+      <p class="edu-inst">Sadjad University, Mashhad</p>
+      <p class="edu-year">2005 – 2008 · GPA 14.8/20</p>
+      <p class="edu-thesis">Thesis: Study of Operational Amplifier and Construction of Integrator</p>
+    </div>
+  </div>
+
+  <h3 class="subsection-title">Certifications & Professional Development</h3>
+  <div class="cert-list">
+    <div class="cert-item">
+      <div class="cert-icon">🛰️</div>
+      <div><p class="cert-name">International School on Space Optics (ISSO 2025)</p><p class="cert-issuer">ESA/ESTEC · Noordwijk, Netherlands · October 2025 · Visits: ESTEC, Airbus Leiden, SRON, Cosine · Space optics, optical payload architectures, quantum optics, LiDARs, adaptive optics</p></div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-icon">💎</div>
+      <div><p class="cert-name">Silicon Photonics Design, Fabrication and Data Analysis</p><p class="cert-issuer">University of British Columbia (edX Professional Certificate) · Sep–Dec 2025 · PDK workflows, fabrication-aware PIC design, corner analysis, wafer-scale variability</p></div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-icon">⚛️</div>
+      <div><p class="cert-name">3-Day International Workshop on Computational Nanoelectronics</p><p class="cert-issuer">Shezaan Convergent Technologies · NEGF, ATK simulations, Boltzmann transport, carbon nanotube device simulation</p></div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-icon">🔭</div>
+      <div><p class="cert-name">Scanning Electron Microscopy (SEM)</p><p class="cert-issuer">Nanotechnology Initiative · SEM fundamentals, electron-sample interaction, image formation, sample preparation</p></div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-icon">📜</div>
+      <div><p class="cert-name">Patent & Intellectual Property Law</p><p class="cert-issuer">Nanotechnology Initiative · IP law, domestic and international patent filing, commercialization strategies</p></div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-icon">🌐</div>
+      <div><p class="cert-name">International ISO Standards Familiarization</p><p class="cert-issuer">ISO standard development and international standardization procedures</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact" class="page-section alt-bg">
+  <p class="section-eyebrow">Get in Touch</p>
+  <h2 class="section-title">Contact</h2>
+  <div class="contact-grid">
+    <div class="contact-intro">
+      <p>I am currently a postdoctoral researcher at Politecnico di Bari and will be available for new positions from <strong>October 2026</strong>.</p>
+      <p>I am actively seeking industry R&D or research scientist roles in <strong>PIC design, photonic sensing, and photonics for space</strong>. With expert-level multiphysics simulation expertise, ISO Class 7 cleanroom hands-on experience, optical characterization knowledge, and electronic hardware background, I bring a rare combination of rigorous sensor design and cross-domain modeling depth that can open new directions for your team.</p>
+      <p>If you are working on a challenging problem at the intersection of photonics, simulation, and real-world engineering — I would be glad to connect.</p>
+    </div>
+    <div class="contact-links">
+      <a href="mailto:maleki.morteza.ac@gmail.com" class="contact-link"><span class="cl-icon">✉️</span>maleki.morteza.ac@gmail.com<span class="cl-label">Email</span></a>
+      <a href="https://linkedin.com/in/morteza-maleki" target="_blank" rel="noopener" class="contact-link"><span class="cl-icon">🔗</span>linkedin.com/in/morteza-maleki<span class="cl-label">LinkedIn</span></a>
+      <a href="https://scholar.google.com/citations?user=LmLHjy0AAAAJ" target="_blank" rel="noopener" class="contact-link"><span class="cl-icon">📚</span>Google Scholar<span class="cl-label">Publications</span></a>
+      <a href="https://researchgate.net/profile/Morteza-Maleki-5" target="_blank" rel="noopener" class="contact-link"><span class="cl-icon">🔬</span>ResearchGate<span class="cl-label">Research</span></a>
+      <a href="https://orcid.org/0000-0003-4856-2072" target="_blank" rel="noopener" class="contact-link"><span class="cl-icon">🆔</span>ORCiD: 0000-0003-4856-2072<span class="cl-label">ORCiD</span></a>
+      <a href="https://publons.com/researcher/3555705/morteza-maleki/" target="_blank" rel="noopener" class="contact-link"><span class="cl-icon">📝</span>Publons Reviewer Profile<span class="cl-label">Reviewer</span></a>
+      <a href="https://github.com/Maleki-Morteza" target="_blank" rel="noopener" class="contact-link"><span class="cl-icon">💻</span>github.com/Maleki-Morteza<span class="cl-label">GitHub</span></a>
+      <a href="https://sites.google.com/view/morteza-maleki" target="_blank" rel="noopener" class="contact-link"><span class="cl-icon">🌐</span>sites.google.com/view/morteza-maleki<span class="cl-label">Current Site</span></a>
+    </div>
+  </div>
+</section>
+
+<div id="update-panel" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:999;display:none;align-items:center;justify-content:center">
+  <div style="background:#111827;border:1px solid rgba(13,148,136,.3);border-radius:14px;padding:2rem;width:min(580px,92vw);max-height:90vh;overflow-y:auto">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem">
+      <h3 style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:600;color:#fff">Update Profile Metrics</h3>
+      <button onclick="closePanel()" style="background:none;border:none;color:#94a3b8;font-size:1.4rem;cursor:pointer">✕</button>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:1rem">
+      <div style="font-family:'Space Mono',monospace;font-size:11px;color:#0d9488;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.25rem">Citation Metrics</div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.75rem">
+        <div><label style="font-size:12px;color:#94a3b8;display:block;margin-bottom:4px;font-family:'Space Mono',monospace">Citations</label>
+        <input id="u-citations" type="number" value="112" style="width:100%;padding:.5rem .75rem;background:#1e2a3a;border:1px solid rgba(255,255,255,.1);border-radius:6px;color:#fff;font-size:14px"></div>
+        <div><label style="font-size:12px;color:#94a3b8;display:block;margin-bottom:4px;font-family:'Space Mono',monospace">h-index</label>
+        <input id="u-hindex" type="number" value="6" style="width:100%;padding:.5rem .75rem;background:#1e2a3a;border:1px solid rgba(255,255,255,.1);border-radius:6px;color:#fff;font-size:14px"></div>
+        <div><label style="font-size:12px;color:#94a3b8;display:block;margin-bottom:4px;font-family:'Space Mono',monospace">i10-index</label>
+        <input id="u-i10" type="number" value="5" style="width:100%;padding:.5rem .75rem;background:#1e2a3a;border:1px solid rgba(255,255,255,.1);border-radius:6px;color:#fff;font-size:14px"></div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem">
+        <div><label style="font-size:12px;color:#94a3b8;display:block;margin-bottom:4px;font-family:'Space Mono',monospace">RG Reads</label>
+        <input id="u-rgreads" type="text" value="13,494" style="width:100%;padding:.5rem .75rem;background:#1e2a3a;border:1px solid rgba(255,255,255,.1);border-radius:6px;color:#fff;font-size:14px"></div>
+        <div><label style="font-size:12px;color:#94a3b8;display:block;margin-bottom:4px;font-family:'Space Mono',monospace">Publications</label>
+        <input id="u-pubs" type="number" value="23" style="width:100%;padding:.5rem .75rem;background:#1e2a3a;border:1px solid rgba(255,255,255,.1);border-radius:6px;color:#fff;font-size:14px"></div>
+      </div>
+
+      <div style="border-top:1px solid rgba(255,255,255,.07);padding-top:1rem;margin-top:.25rem">
+        <div style="font-family:'Space Mono',monospace;font-size:11px;color:#0d9488;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.75rem">Peer Review Journals</div>
+        <p style="font-size:12.5px;color:#64748b;margin-bottom:.75rem">Enter journal names one per line (from your ORCiD/Publons profile)</p>
+        <div style="margin-bottom:.5rem;font-size:12px;color:#94a3b8;font-family:'Space Mono',monospace">OPTICA Publishing Group (certified):</div>
+        <textarea id="u-optica" rows="3" style="width:100%;padding:.5rem .75rem;background:#1e2a3a;border:1px solid rgba(255,255,255,.1);border-radius:6px;color:#fff;font-size:13px;resize:vertical;font-family:'Space Mono',monospace">Optics Express · JOSA B · Applied Optics · Optics Letters</textarea>
+        <div style="margin-bottom:.5rem;margin-top:.75rem;font-size:12px;color:#94a3b8;font-family:'Space Mono',monospace">Springer-Nature (invited):</div>
+        <textarea id="u-springer" rows="2" style="width:100%;padding:.5rem .75rem;background:#1e2a3a;border:1px solid rgba(255,255,255,.1);border-radius:6px;color:#fff;font-size:13px;resize:vertical;font-family:'Space Mono',monospace">Plasmonics · Micro and Nanostructures</textarea>
+        <div style="margin-bottom:.5rem;margin-top:.75rem;font-size:12px;color:#94a3b8;font-family:'Space Mono',monospace">Other journals (IEEE, IOP, MDPI — one per line):</div>
+        <textarea id="u-other" rows="3" style="width:100%;padding:.5rem .75rem;background:#1e2a3a;border:1px solid rgba(255,255,255,.1);border-radius:6px;color:#fff;font-size:13px;resize:vertical;font-family:'Space Mono',monospace">IEEE Sensors Journal
+IOP Publishing
+Applied Sciences (MDPI) · Sensors (MDPI)</textarea>
+      </div>
+
+      <div style="border-top:1px solid rgba(255,255,255,.07);padding-top:1rem">
+        <div style="font-family:'Space Mono',monospace;font-size:11px;color:#0d9488;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.75rem">Citation Chart (per year)</div>
+        <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:.5rem">
+          <div><label style="font-size:11px;color:#64748b;display:block;margin-bottom:3px;font-family:'Space Mono',monospace">2021</label><input id="cy-2021" type="number" value="5" style="width:100%;padding:.4rem .5rem;background:#1e2a3a;border:1px solid rgba(255,255,255,.1);border-radius:6px;color:#fff;font-size:13px"></div>
+          <div><label style="font-size:11px;color:#64748b;display:block;margin-bottom:3px;font-family:'Space Mono',monospace">2022</label><input id="cy-2022" type="number" value="24" style="width:100%;padding:.4rem .5rem;background:#1e2a3a;border:1px solid rgba(255,255,255,.1);border-radius:6px;color:#fff;font-size:13px"></div>
+          <div><label style="font-size:11px;color:#64748b;display:block;margin-bottom:3px;font-family:'Space Mono',monospace">2023</label><input id="cy-2023" type="number" value="31" style="width:100%;padding:.4rem .5rem;background:#1e2a3a;border:1px solid rgba(255,255,255,.1);border-radius:6px;color:#fff;font-size:13px"></div>
+          <div><label style="font-size:11px;color:#64748b;display:block;margin-bottom:3px;font-family:'Space Mono',monospace">2024</label><input id="cy-2024" type="number" value="22" style="width:100%;padding:.4rem .5rem;background:#1e2a3a;border:1px solid rgba(255,255,255,.1);border-radius:6px;color:#fff;font-size:13px"></div>
+          <div><label style="font-size:11px;color:#64748b;display:block;margin-bottom:3px;font-family:'Space Mono',monospace">2025</label><input id="cy-2025" type="number" value="17" style="width:100%;padding:.4rem .5rem;background:#1e2a3a;border:1px solid rgba(255,255,255,.1);border-radius:6px;color:#fff;font-size:13px"></div>
+          <div><label style="font-size:11px;color:#64748b;display:block;margin-bottom:3px;font-family:'Space Mono',monospace">2026</label><input id="cy-2026" type="number" value="13" style="width:100%;padding:.4rem .5rem;background:#1e2a3a;border:1px solid rgba(255,255,255,.1);border-radius:6px;color:#fff;font-size:13px"></div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:.75rem;margin-top:.5rem">
+        <button onclick="applyUpdates()" style="flex:1;padding:.7rem;background:#0d9488;border:none;border-radius:7px;color:#fff;font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:500;cursor:pointer">Apply Updates</button>
+        <button onclick="closePanel()" style="padding:.7rem 1.2rem;background:transparent;border:1px solid rgba(255,255,255,.15);border-radius:7px;color:#94a3b8;font-family:'Space Grotesk',sans-serif;font-size:14px;cursor:pointer">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button onclick="document.getElementById('update-panel').style.display='flex'" style="position:fixed;bottom:1.5rem;right:1.5rem;z-index:90;background:#0d9488;border:none;border-radius:50px;padding:.6rem 1.1rem;color:#fff;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.06em;cursor:pointer;box-shadow:0 4px 20px rgba(13,148,136,.35)">⟳ UPDATE</button>
+
+<footer>
+  <p>Morteza Maleki, PhD · Photonic Sensing & Multiphysics Simulation Engineer · Bari, Italy</p>
+  <p style="margin-top:.4rem;color:#1e293b">OPTICA Member · Reviewer: OPTICA · Springer-Nature · IOP · IEEE · MDPI · WoS: ABH-6234-2020 · Last updated: June 2026</p>
+</footer>
+
+<!-- WAVE ANIMATION -->
+<script>
+(function(){
+  const c=document.getElementById('wave-canvas'),ctx=c.getContext('2d');
+  let W,H,t=0;
+  function r(){W=c.width=c.offsetWidth;H=c.height=c.offsetHeight}
+  r();window.addEventListener('resize',r);
+  const waves=[
+    {A:.042,f:1.8,phi:0,spd:.011,al:.32,col:'#0d9488'},
+    {A:.026,f:3.3,phi:1.1,spd:.017,al:.20,col:'#14b8a6'},
+    {A:.016,f:5.6,phi:2.5,spd:.024,al:.13,col:'#2dd4bf'},
+    {A:.01,f:8.2,phi:.7,spd:.033,al:.09,col:'#d97706'},
+  ];
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    waves.forEach(w=>{
+      ctx.beginPath();ctx.strokeStyle=w.col;ctx.globalAlpha=w.al;ctx.lineWidth=1.4;
+      const cy=H*.54,amp=H*w.A;
+      for(let x=0;x<=W;x+=2){
+        const y=cy+Math.sin((x/W)*Math.PI*2*w.f+t*w.spd+w.phi)*amp;
+        x===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+      }
+      ctx.stroke();
+    });
+    ctx.globalAlpha=1;t++;requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+function closePanel(){document.getElementById('update-panel').style.display='none'}
+
+function applyUpdates(){
+  const citations=document.getElementById('u-citations').value;
+  const hindex=document.getElementById('u-hindex').value;
+  const i10=document.getElementById('u-i10').value;
+  const rgreads=document.getElementById('u-rgreads').value;
+  const pubs=document.getElementById('u-pubs').value;
+
+  // Update hero stats
+  document.querySelectorAll('.stat').forEach(s=>{
+    const lbl=s.querySelector('.stat-label').textContent.trim();
+    const num=s.querySelector('.stat-num');
+    if(lbl==='Citations')num.textContent=citations;
+    if(lbl==='h-index')num.textContent=hindex;
+    if(lbl==='Publications')num.textContent=pubs;
+    if(lbl==='RG Reads')num.textContent=rgreads.replace(',','').length>4?rgreads.replace(/(\d)(?=(\d{3})+$)/g,'$1,'):rgreads;
+  });
+
+  // Update scholar strip
+  document.querySelectorAll('.s-metric').forEach(m=>{
+    const lbl=m.querySelector('.s-lbl').textContent.trim();
+    const num=m.querySelector('.s-num');
+    if(lbl==='Citations')num.textContent=citations;
+    if(lbl==='h-index')num.textContent=hindex;
+    if(lbl==='i10')num.textContent=i10;
+  });
+
+  // Update pub stats pills
+  document.querySelectorAll('.pub-stat-pill').forEach(p=>{
+    const txt=p.querySelector('span')?.textContent.trim();
+    const strong=p.querySelector('strong');
+    if(!strong)return;
+    if(txt==='Citations')strong.textContent=citations;
+    if(txt==='h-index')strong.textContent=hindex;
+    if(txt==='i10-index')strong.textContent=i10;
+    if(txt==='RG Reads')strong.textContent=rgreads;
+    if(txt==='Total Publications')strong.textContent=pubs;
+  });
+
+  // Update metric cards in standing section
+  document.querySelectorAll('.metric-card').forEach(c=>{
+    const lbl=c.querySelector('.metric-label').textContent.trim();
+    const num=c.querySelector('.metric-num');
+    if(lbl==='Citations')num.textContent=citations;
+    if(lbl==='h-index')num.textContent=hindex;
+    if(lbl==='i10-index')num.textContent=i10;
+    if(lbl==='Publications')num.textContent=pubs;
+  });
+
+  // Update citation chart
+  const years=['2021','2022','2023','2024','2025','2026'];
+  const vals=years.map(y=>parseInt(document.getElementById('cy-'+y).value)||0);
+  const maxVal=Math.max(...vals);
+  const bars=document.querySelectorAll('.cc-bar-wrap');
+  bars.forEach((wrap,i)=>{
+    if(i>=vals.length)return;
+    const bar=wrap.querySelector('.cc-bar');
+    const num=wrap.querySelector('.cc-num');
+    const pct=maxVal>0?Math.max(5,Math.round((vals[i]/maxVal)*100)):5;
+    bar.style.height=pct+'%';
+    num.textContent=vals[i]+(i===vals.length-1?'+':'');
+  });
+
+  // Update peer review section
+  const optica=document.getElementById('u-optica').value.trim();
+  const springer=document.getElementById('u-springer').value.trim();
+  const other=document.getElementById('u-other').value.trim().split('\n').filter(Boolean);
+
+  const standingCards=document.querySelectorAll('.standing-card');
+  standingCards.forEach(card=>{
+    const h4=card.querySelector('h4');
+    const p=card.querySelector('p');
+    if(!h4||!p)return;
+    if(h4.textContent.includes('OPTICA'))p.textContent='Certified Reviewer · '+optica;
+    if(h4.textContent.includes('Springer'))p.textContent='Invited Reviewer · '+springer;
+    if(h4.textContent.includes('IEEE')&&!h4.textContent.includes('Springer')){
+      // rebuild other publishers
+    }
+  });
+
+  closePanel();
+  alert('Updated! To save permanently: use Ctrl+S or File → Save Page As in your browser, then upload the new file to GitHub.');
+}
+
+
+  document.querySelectorAll('.pfbtn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#pub-list .pub-item').forEach(el=>{
+    if(type==='all')el.style.display='';
+    else if(type==='led')el.style.display=el.dataset.led?'':'none';
+    else el.style.display=el.dataset.type===type?'':'none';
+  });
+  document.querySelectorAll('#pub-list .pub-year-sep').forEach(el=>{
+    el.style.display=type==='all'?'':'none';
+  });
+}
+</script>
+</body>
+</html>
